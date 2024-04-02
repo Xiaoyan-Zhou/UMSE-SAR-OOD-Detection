@@ -1,5 +1,5 @@
 # UMSE-SAR-OOD-Detection
-Mitigating SAR Out-of-distribution Overconfidence based on Evidential Uncertainty
+## Mitigating SAR Out-of-distribution Overconfidence based on Evidential Uncertainty
 
 ### Our paper will be submitted to IEEE Geoscience and Remote Sensing Letters; the trained model weights will be released soon.
 ## Abstract
