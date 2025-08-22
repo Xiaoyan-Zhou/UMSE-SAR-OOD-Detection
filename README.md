@@ -23,4 +23,15 @@ plot_distribution([score_id, score_sample, score_airplane, score_ship], ['MSTAR'
 
 In draw_reults.py, since we use Seaborn's kdeplot to draw the density plot, the x-axis range might extend beyond 1 even though all data values are less than or equal to 1. This occurs because the kernel density estimation (KDE) can generate small tails near the data boundaries, attempting to smooth the overall distribution. Therefore, use plt.xlim(0, 1) in the function of plot_distribution when you use MSP method and want to show the distribution result.
 
+## pretrained model download:
+https://drive.google.com/drive/folders/16PqnRGShRZEKKyRWI4UEpmKU3gThz97h?usp=drive_link
+## If you feel our code is useful for you, please cite our paper
+@article{zhou2024mitigating,
+  title={Mitigating SAR Out-of-Distribution Overconfidence Based on Evidential Uncertainty},
+  author={Zhou, Xiaoyan and Tang, Tao and Sun, Zhongzhen and Kuang, Gangyao and Heikkil{\"a}, Janne and Liu, Li},
+  journal={IEEE Geoscience and Remote Sensing Letters},
+  year={2024},
+  publisher={IEEE}
+}
+
 
