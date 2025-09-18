@@ -26,6 +26,8 @@ In draw_reults.py, since we use Seaborn's kdeplot to draw the density plot, the 
 ## pretrained model download:
 https://drive.google.com/drive/folders/16PqnRGShRZEKKyRWI4UEpmKU3gThz97h?usp=drive_link
 ## If you feel our code is useful for you, please cite our paper
+
+```
 @article{zhou2024mitigating,
   title={Mitigating SAR Out-of-Distribution Overconfidence Based on Evidential Uncertainty},
   author={Zhou, Xiaoyan and Tang, Tao and Sun, Zhongzhen and Kuang, Gangyao and Heikkil{\"a}, Janne and Liu, Li},
@@ -33,5 +35,7 @@ https://drive.google.com/drive/folders/16PqnRGShRZEKKyRWI4UEpmKU3gThz97h?usp=dri
   year={2024},
   publisher={IEEE}
 }
+```
+
 
 
