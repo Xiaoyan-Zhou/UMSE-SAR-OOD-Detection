@@ -36,7 +36,7 @@ def parse_option():
 
     parser.add_argument('--batch_size', type=int, default=8, help='batch_size')
     parser.add_argument('--epochs', type=int, default=100, help='number of training epochs')
-    parser.add_argument('--loss_option', type=str, default='UMSE', choices=['CE', 'UMSE', 'LogitNorm'],
+    parser.add_argument('--loss_option', type=str, default='UMSE', choices=['CE', 'UMSE', 'LogitNorm', 'EDL'],
                         help='the choice of loss function')
 
     parser.add_argument('--model', type=str, default='resnet18', choices=['resnet18', 'wrn', 'densenet'], help='the choice of model')
@@ -92,6 +92,11 @@ def train(train_loader, model, criterion_cls, optimizer, opt, epoch, device):
             elif opt.loss_option == 'CE':
                 label = label.to(device)
                 loss1 = criterion_cls(logits, label)
+            elif opt.loss_option == 'EDL':#use uncertainty aware loss function
+                y = one_hot_embedding(label, opt.num_classes)#one_hot 向量
+                y = y.to(device)
+                label = label.to(device)
+                loss1 = criterion_cls(logits, y.float(), epoch, opt.num_classes, 10, device, KL=True)
             loss = loss1
             acc1, acc2 = accuracy(logits, label, topk=(1, 2))
             top1.update(acc1[0], input.size(0))
@@ -118,9 +123,9 @@ def main(opt):
     device = get_device()
 
     # loss function
-    if opt.loss_option =='UMSE':
+    if opt.loss_option in ['UMSE', 'EDL']:
         criterion_cls = edl_mse_loss
-        print('the loss function is UMSE')
+        print('the loss function is ', opt.loss_option)
     elif opt.loss_option == 'LogitNorm':
         criterion_cls = LogitNormLoss(device, t=0.01)
     elif opt.loss_option == 'CE':

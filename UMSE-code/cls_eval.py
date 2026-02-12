@@ -191,7 +191,7 @@ def data_test_logit(data_loader, model, model_f, device, method='MaxLogit', loss
                 # compute output
                 logits = model(input)#logits
 
-                if loss_option == 'UMSE':
+                if loss_option in ['UMSE', 'EDL']:
                     evidence = relu_evidence(logits)
                     alpha = evidence + 1
                     probability = alpha / torch.sum(alpha, dim=1, keepdim=True)
